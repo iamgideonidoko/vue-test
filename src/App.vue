@@ -1,6 +1,9 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <h1 ref="name">{{ name }}</h1>
+  <!-- Click event modifiers -->
+  <button @click.self="handleClick">Click me</button>
+  <HelloWorld :msg="message" @log="log" />
 </template>
 
 <script lang="ts">
@@ -11,6 +14,20 @@ export default defineComponent({
   name: 'App',
   components: {
     HelloWorld
+  },
+  data() {
+    return {
+      name: 'Gideon Idoko',
+      message: 'The name of the lord is as strong tower'
+    }
+  },
+  methods: {
+    handleClick() {
+      console.log(this.$refs.name);
+    },
+    log() {
+      console.log('Some random logging');
+    }
   }
 });
 </script>

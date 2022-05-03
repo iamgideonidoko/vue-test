@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <button @click="handleHelloClick">Hello world button</button>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -36,8 +37,14 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: 'HelloWorld',
   props: {
-    msg: String,
+    msg: String
   },
+  methods: {
+    handleHelloClick() {
+      this.$emit('log');
+      console.log('Log event should be emitted');
+    }
+  }
 });
 </script>
 
